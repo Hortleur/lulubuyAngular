@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>addProduct</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="product" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="6">
+              <ion-row>
+                <ion-col size="12">
+                  <ion-label>Barcode</ion-label>
+                </ion-col>
+                <ion-col size="12">
+                  <ion-input formControlName="BarCode" type="number" placeholder="bar code"></ion-input>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="6" class=" ion-text-end">
+              <ion-button>
+                <ion-icon name="camera-sharp"></ion-icon>
+                scan
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-label>Stock</ion-label>
+        <ion-input formControlName="product_stock" type="number" placeholder="stock" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Price(€)</ion-label>
+        <ion-input formControlName="product_price" type="number" placeholder="price" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product Name</ion-label>
+        <ion-input formControlName="product_model" type="text" placeholder="product name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Firm Brand</ion-label>
+        <ion-input formControlName="product_brand" type="text" placeholder="Brand" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" [disabled]="!product.valid" expand="block" fill="clear" shape="round" required>
+      add product
+    </ion-button>
+  </form>
+</ion-content>

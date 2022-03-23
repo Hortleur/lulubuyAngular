@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class=" ion-text-center">{{product.product_model}}</ion-title>
+    <ion-note color="light">{{product.product_model_alt}}</ion-note>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngIf="!showForm">
+    <ion-card-header>
+      <ion-card-title>Brand: {{product.product_brand}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-item>
+      Price: {{product.product_price}}
+    </ion-item>
+    <ion-item>
+      Stock: {{product.product_stock}}
+    </ion-item>
+
+    <svg id="barCode"></svg>
+
+  </ion-card>
+
+
+  <form [formGroup]="prod" (ngSubmit)="onSubmit()" *ngIf="showForm">
+    <ion-list>
+      <ion-item>
+        <ion-label>Product Model</ion-label>
+        <ion-input formControlName="product_model" type="text" :placeholder="{{product.product_model}}" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product Brand</ion-label>
+        <ion-input formControlName="product_brand" type="text" :placeholder="{{product.product_brand}}" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product BarCode</ion-label>
+        <ion-input formControlName="BarCode" type="number" :placeholder="{{product.BarCode}}" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product Stock</ion-label>
+        <ion-input formControlName="product_stock" type="number" :placeholder="{{product.product_stock}}" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product Price</ion-label>
+        <ion-input formControlName="product_price" type="number" :placeholder="{{product.product_price}}" required>
+        </ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" expand="block" shape="round">
+      Update
+    </ion-button>
+  </form>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6" class="ion-text-center">
+        <ion-item button (click)="showEdit()" lines="none">
+          <ion-icon name="create-outline" size="large"></ion-icon>
+          <ion-label>Edit</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-item button (click)="deleteProduct()" lines="none">
+          <ion-icon name="trash-outline" size="large"></ion-icon>
+          <ion-label>Delete</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
