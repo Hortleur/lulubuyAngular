@@ -45,4 +45,13 @@ cdk-virtual-scroll-viewport{
   font-size: 0.8rem;
 }
 
+.scrollInfinite::-webkit-scrollbar{
+  display: none;
+}
+
+ion-list{
+  font-size: small;
+}
+
+
 

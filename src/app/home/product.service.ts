@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import {
@@ -9,7 +10,7 @@ import { Product } from './product.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'x-api-key': '4b42ba01-7f28-4184-9fb6-0b888dc2a83f'
+    'x-api-key': environment.apiKey
   })
 };
 
@@ -45,7 +46,8 @@ export class ProductService {
   }
 
   addProduct(product: Product): Observable<Product[]>{
-    return this.http.post<Product[]>(this.baseUrl+'/product', product).pipe(
+    return this.http.post<Product[]>(this.baseUrl+'/product', product)
+    .pipe(
       catchError(
         this.handleError
       )
